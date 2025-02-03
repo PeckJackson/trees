@@ -1,8 +1,10 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 
-def visualize_tree(tree):
+def visualize_tree(tree, fig, ax, pause_time=1):
 
+
+    plt.clf()
 
     G = nx.Graph()
     pos = {}
@@ -30,10 +32,8 @@ def visualize_tree(tree):
     
     add_nodes(tree.root)
 
-    plt.figure(figsize = (10, 8))
-
     nx.draw_networkx_nodes(G, pos,
-        node_color = 'blue',
+        node_color = 'gray',
         node_size = 2000,
         node_shape = 'o')
 
@@ -46,8 +46,8 @@ def visualize_tree(tree):
         font_weight = 'bold')
     
     plt.axis('off')
-    plt.title("Tree Visualization", pad = 20, size = 16)
-    plt.show()
+    fig.canvas.draw()
+    plt.pause(pause_time)
 
 
 
